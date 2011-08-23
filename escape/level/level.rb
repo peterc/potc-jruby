@@ -115,9 +115,9 @@ class Level
 		return LadderBlock.new(false) if col == 0xFF66FF 
 		return LadderBlock.new(true)  if col == 0x9E009E 
 		return LootBlock.new          if col == 0xC1C14D 
-		#return DoorBlock.new          if col == 0xC6C6C6 
+		return DoorBlock.new          if col == 0xC6C6C6 
 		#return SwitchBlock.new        if col == 0x00FFA7 
-		#return PressurePlateBlock.new if col == 0x009380 
+		return PressurePlateBlock.new if col == 0x009380 
 		#return IceBlock.new           if col == 0xff0005 
 		#return IceBlock.new           if col == 0x3F3F60 
 		#return LockedDoorBlock.new    if col == 0xC6C697 

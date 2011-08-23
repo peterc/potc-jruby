@@ -22,6 +22,7 @@ require 'level/block/vanish_block'
 require 'level/block/torch_block'
 require 'level/block/bars_block'
 require 'level/block/ladder_block'
+require 'level/block/pressure_plate_block'
 
 require 'level/level'
 require 'level/start_level'

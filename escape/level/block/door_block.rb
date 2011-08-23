@@ -37,10 +37,11 @@ class DoorBlock < Block
   end
   
   def blocks(entity)
-    openLimit = 7 / 8.0
+    open_limit = 7 / 8.0
     return @blocks_motion if entity.is_a?(Player) && @openness >= open_limit
     return @blocks_motion if entity.is_a?(Bullet) && @openness >= open_limit
-    return @blocks_motion if entity.is_a?(OgreEntity) && @openness >= open_limit
+    # TODO: Uncomment this when the ogre turns up
+    #return @blocks_motion if entity.is_a?(OgreEntity) && @openness >= open_limit
     true
   end  
 end
