@@ -55,13 +55,36 @@ class Entity
   end
   
   def is_free(xx, yy)
-    # TODO: Pick up here
+    x0 = (xx + 0.5 - r).floor
+		x1 = (xx + 0.5 + r).floor
+		y0 = (yy + 0.5 - r).floor
+		y1 = (yy + 0.5 + r).floor
+
+		return false if @level.get_block(x0, y0).blocks self
+		return false if @level.get_block(x1, y0).blocks self
+		return false if @level.get_block(x0, y1).blocks self
+		return false if @level.get_block(x1, y1).blocks self
+
+		xc = (xx + 0.5).floor
+		zc = (yy + 0.5).floor
+		
+		rr = 2
+		
+		(zc - rr).upto(zc + rr) do |z|
+			(xc - rr).upto(xc + rr) do |x|
+				level.get_block(x, z).entities.each do |e|
+					next if e == self
+
+					if (!e.blocks(self, @x, @z, @r) && e.blocks(self, xx, yy, r))
+						e.collide self
+						collide e
+						return false
+					end
+				end
+			end
+		end
     
-    
-    
-    
-    
-    
+    true
   end
   
   def collide(entity); end
