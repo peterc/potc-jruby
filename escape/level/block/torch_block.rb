@@ -2,7 +2,7 @@ class TorchBlock < Block
   def initialize
     super
     @torch_sprite = Sprite.new(0 ,0, 0, 3, Art.get_col(0xffff00))
-    @sprites.add @torch_sprite
+    @sprites << @torch_sprite
   end
   
   def decorate(level, x, y)
