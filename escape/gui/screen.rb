@@ -3,7 +3,7 @@ class Screen < Bitmap
   
   def initialize(width, height)
     super(width, height)
-    #@viewport = Bitmap3D.new(width, height - PANEL_HEIGHT)    
+    @viewport = Bitmap3D.new(width, height - PANEL_HEIGHT)    
   end
   
   def render(game, has_focus)
@@ -14,16 +14,43 @@ class Screen < Bitmap
       if game.pause_time > 0
         fill 0, 0, @width, @height, 0
         messages = "Entering " + game.level.name
-        messages.each do |msg|
+        messages.each_with_index do |msg, y|
           draw_string(msg, (@width - msg.length * 6) / 2, (@viewport.height - messages.length * 8) / 2 + y * 8 + 1, 0x111111)
           draw_string(msg, (@width - msg.length * 6) / 2, (@viewport.height - messages.length * 8) / 2 + y * 8, 0x555544)
         end
       else
-        #viewport.render
+        @viewport.render game
+        @viewport.post_process game.level
         
-        # TODO!!!
+        block = game.level.get_block((game.player.x + 0.5).to_i, (game.player.z + 0.5).to_i)
+        if block.messages && has_focus
+          block.messages.each_with_index do |msg, y|
+            draw_string(msg, (@width - msg.length * 6) / 2, (@viewport.height - block.messages.length * 8) / 2 + y * 8 + 1, 0x111111)
+            draw_string(msg, (@width - msg.length * 6) / 2, (@viewport.height - block.messages.length * 8) / 2 + y * 8, 0x555544)
+          end
+        end
         
+        draw @viewport, 0, 0
+        xx = (game.player.turn_bob * 32).to_i
+        yy = (Math.sin(game.player.bob_phase * 0.4) * 1 * game.player.bob + game.player.bob * 2).to_i
         
+        xx = yy = 0 if item_used
+        xx += @width / 2
+        yy += @height - PANEL_HEIGHT - 15 * 3
+        if item != Item::NONE
+          scale_draw(Art::ITEMS, 3, xx, yy, 16 * item.icon + 1, 16 + 1 + (item_used ? 16 : 0), 15, 15, Art.get_col(item.color))
+        end
+        
+        if game.player.hurt_time > 0 || game.player.dead
+          offs = 1.5 - game.player.hurt_time / 30.0
+          rnd = random(111)
+          offs = 0.5 if game.player.dead
+          @pixels.length.times do |i|
+            xp = ((i % @width) - @viewport.width / 2.0) / @width * 2
+            yp = ((i / @width) - @viewport.height / 2.0) / @viewport.height * 2
+            @pixels[i] = (rand(5) / 4) * 0x550000 if (rand + offs < Math.sqrt(xp * xp + yp * yp))
+          end
+        end  
       end
       
       draw_bitmap(Art::PANEL, 0, @height - PANEL_HEIGHT, 0, 0, @width, PANEL_HEIGHT, Art.get_col(0x707070))
