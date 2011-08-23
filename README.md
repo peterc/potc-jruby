@@ -2,9 +2,11 @@
 
 This is an in-progress JRuby port of notch's 48 hour "Ludum Dare" game competition entry, _Prelude of the Chambered_.
 
+![](http://no.gd/m/potc-20110823-230659.jpg)
+
 Notch's Java code is pretty straightforward and I've been looking for an excuse to do a "real" project in JRuby for ages. This seemed an ideal opportunity.
 
-Porting is still in progress and I'm only as far as the main menu so far. But a lot of "support" code has already been ported so progress is going well.
+Porting is still in progress but the first few minutes of the game are playable, to a point. Doors don't seem to animate properly but you can go through them once opened, nonetheless.
 
 ## Running
 
