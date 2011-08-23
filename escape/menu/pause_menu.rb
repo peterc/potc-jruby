@@ -21,15 +21,15 @@ class PauseMenu < Menu
   
   def tick(game, up, down, left, right, use)
     Sound::CLICK2.play if up || down
-    selected -= 1 if up
-    selected += 1 if down
-    selected = 0 if selected < 0
-    selected = @options.length - 1 if selected >= @options.length
+    @selected -= 1 if up
+    @selected += 1 if down
+    @selected = 0 if @selected < 0
+    @selected = @options.length - 1 if @selected >= @options.length
     if use
       Sound::CLICK1.play
-      if selected == 0
+      if @selected == 0
         game.set_menu TitleMenu.new
-      elsif selected == 1
+      elsif @selected == 1
         game.set_menu nil
       end
     end

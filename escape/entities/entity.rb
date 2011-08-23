@@ -35,23 +35,23 @@ class Entity
     x_steps = ((xa * 100).abs + 1).to_i
     x_steps.downto(1) do |i|
       xxa = @xa
-      if is_free(x + xxa * i / x_steps, z)
-        x += xxa * i / x_steps
+      if is_free(@x + xxa * i / x_steps, @z)
+        @x += xxa * i / x_steps
         break
       end
 
-      xa = 0
+      @xa = 0
     end
     
-    z_steps = ((za * 100).abs + 1).to_i
+    z_steps = ((@za * 100).abs + 1).to_i
     z_steps.downto(1) do |i|
       zza = @za
-      if is_free(x, z + zza * i / z_steps)
-        z += zza * i / z_steps
+      if is_free(@x, @z + zza * i / z_steps)
+        @z += zza * i / z_steps
         break
       end
 
-      za = 0
+      @za = 0
     end
   end
   

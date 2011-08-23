@@ -90,14 +90,14 @@ class Player < Entity
 				@za = @za > 0 ? 0.08 : -0.08
 				@x += ((@x + 0.5).to_i - @x) * 0.2
 			else
-				@xa -= (@xm * Math.cos(@rot) + @zm * Math.sin(@rot)) * 0.1
-				@za -= (@zm * Math.cos(@rot) - @xm * Math.sin(@rot)) * 0.1
+				@xa -= (xm * Math.cos(@rot) + zm * Math.sin(@rot)) * 0.1
+				@za -= (zm * Math.cos(@rot) - xm * Math.sin(@rot)) * 0.1
 			end
 
 			Sound::SLIDE.play if !was_sliding && @sliding
 		else
-			@xa -= (@xm * Math.cos(@rot) + @zm * Math.sin(@rot)) * walk_speed
-			@za -= (@zm * Math.cos(@rot) - @xm * Math.sin(@rot)) * walk_speed
+			@xa -= (xm * Math.cos(@rot) + zm * Math.sin(@rot)) * walk_speed
+			@za -= (zm * Math.cos(@rot) - xm * Math.sin(@rot)) * walk_speed
 		end
 
 		move

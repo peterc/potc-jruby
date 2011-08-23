@@ -62,8 +62,10 @@ class Game
 		8.times do |i|
 			next unless keys[KeyEvent::VK_1 + i]
 			keys[KeyEvent::VK_1 + i] = false
-			@player.selected_slot = i
-			@player.item_use_time = 0
+			if @player
+			  @player.selected_slot = i
+			  @player.item_use_time = 0
+			end
 		end
 
 		if keys[KeyEvent::VK_ESCAPE]

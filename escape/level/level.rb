@@ -195,7 +195,7 @@ class Level
 
 	def tick
 	  entities.each_with_index do |e, i|
-			e.tick
+	    e.tick if e.method(:tick).arity == 0    # FIXME: A hack because of some Java confusion..
 			e.update_pos
 			entities.delete(e) if e.is_removed   # beware: this might be wrong.. original removes element i--.. may not be necessary with Ruby's iterators
 		end
