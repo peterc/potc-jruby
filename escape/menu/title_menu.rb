@@ -41,11 +41,9 @@ class TitleMenu < Menu
 			if @selected == 0
 				game.menu = nil
 				game.new_game
-			end
-			if @selected == 1
+			elsif @selected == 1
 				game.set_menu(InstructionsMenu.new)
-			end
-			if @selected == 2
+			elsif @selected == 2
 				game.set_menu(AboutMenu.new)
 			end
 		end

@@ -18,6 +18,7 @@ require 'menu/menu'
 require 'menu/title_menu'
 require 'menu/instructions_menu'
 require 'menu/about_menu'
+require 'menu/pause_menu'
 
 require 'art'
 require 'sound'
