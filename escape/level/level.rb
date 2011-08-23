@@ -61,7 +61,7 @@ class Level
 
 	def remove_entity_immediately(player)
 		entities.delete player
-		get_block(player.x_tileO, player.z_tileO).remove_entity player
+		get_block(player.x_tileo, player.z_tileo).remove_entity player
 	end
 
 	def decorate_block(x, y, block, col)
@@ -73,7 +73,7 @@ class Level
 		end
 		
 		#add_entity BoulderEntity.new(x, y)   if col == 0xAA5500 
-		#add_entity BatEntity.new(x, y)       if col == 0xff0000 
+		add_entity BatEntity.new(x, y)       if col == 0xff0000 
 		#add_entity BatBossEntity.new(x, y)   if col == 0xff0001 
 		#add_entity OgreEntity.new(x, y)      if col == 0xff0002 
 		#add_entity BossOgre.new(x, y)        if col == 0xff0003 
@@ -110,9 +110,9 @@ class Level
 		return ChestBlock.new         if col == 0xFFFF64 
 		#return WaterBlock.new         if col == 0x0000FF 
 		return TorchBlock.new         if col == 0xFF3A02 
-		#return BarsBlock.new          if col == 0x4C4C4C 
-		#return LadderBlock.new(false) if col == 0xFF66FF 
-		#return LadderBlock.new(true)  if col == 0x9E009E 
+		return BarsBlock.new          if col == 0x4C4C4C 
+		return LadderBlock.new(false) if col == 0xFF66FF 
+		return LadderBlock.new(true)  if col == 0x9E009E 
 		return LootBlock.new          if col == 0xC1C14D 
 		#return DoorBlock.new          if col == 0xC6C6C6 
 		#return SwitchBlock.new        if col == 0x00FFA7 

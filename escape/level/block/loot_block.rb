@@ -11,7 +11,7 @@ class LootBlock < Block
   
   def add_entity(entity)
     super entity
-    if !taken && entity.is_a?(Player)
+    if !@taken && entity.is_a?(Player)
       @sprite.removed = true
       @taken = true
       @blocks_motion = false

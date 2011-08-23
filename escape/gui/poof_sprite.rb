@@ -6,6 +6,6 @@ class PoofSprite < Sprite
   
   def tick
     @life -= 1
-    @removed = true if life <= 0
+    @removed = true if @life <= 0
   end
 end

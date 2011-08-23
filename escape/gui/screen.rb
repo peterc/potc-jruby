@@ -43,7 +43,7 @@ class Screen < Bitmap
         
         if game.player.hurt_time > 0 || game.player.dead
           offs = 1.5 - game.player.hurt_time / 30.0
-          rnd = random(111)
+          rnd = rand(111)
           offs = 0.5 if game.player.dead
           @pixels.length.times do |i|
             xp = ((i % @width) - @viewport.width / 2.0) / @width * 2
@@ -68,12 +68,12 @@ class Screen < Bitmap
 					draw_bitmap(Art::ITEMS, 30 + i * 16, @height - PANEL_HEIGHT + 2, slot_item.icon * 16, 0, 16, 16, Art.get_col(slot_item.color))
 					
 					if slot_item == Item::PISTOL
-						str = "" + game.player.ammo
+						str = game.player.ammo.to_s
 						draw_string(str, 30 + i * 16 + 17 - str.length() * 6, @height - PANEL_HEIGHT + 1 + 10, 0x555555)
 					end
 					
 					if slot_item == Item::POTION
-						str = "" + game.player.potions
+						str = game.player.potions.to_s
 						draw_string(str, 30 + i * 16 + 17 - str.length() * 6, @height - PANEL_HEIGHT + 1 + 10, 0x555555)
 					end
 				end

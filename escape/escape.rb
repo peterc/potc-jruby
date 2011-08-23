@@ -20,9 +20,13 @@ require 'level/block/ice_block'
 require 'level/block/door_block'
 require 'level/block/vanish_block'
 require 'level/block/torch_block'
+require 'level/block/bars_block'
+require 'level/block/ladder_block'
 
 require 'level/level'
 require 'level/start_level'
+require 'level/overworld_level'
+require 'level/dungeon_level'
 
 require 'gui/bitmap'
 require 'gui/bitmap3d'
@@ -40,6 +44,9 @@ require 'menu/got_loot_menu'
 
 require 'entities/entity'
 require 'entities/player'
+require 'entities/bullet'
+require 'entities/enemy_entity'
+require 'entities/bat_entity'
 
 require 'art'
 require 'sound'

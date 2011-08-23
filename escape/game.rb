@@ -38,7 +38,7 @@ class Game
   
   def tick(keys)
 		if @pause_time > 0
-			@pauseTime -= 1
+			@pause_time -= 1
 			return
 		end
 
