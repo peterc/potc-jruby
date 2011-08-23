@@ -231,8 +231,8 @@ class Level
 	end
 
 	def get_loot(id)
-		game.get_loot(Item.pistol) if id == 20
-		game.get_loot(Item.potion) if id == 21
+		game.get_loot(Item::PISTOL) if id == 20
+		game.get_loot(Item::PISTOL) if id == 21
 	end
 
 	def win

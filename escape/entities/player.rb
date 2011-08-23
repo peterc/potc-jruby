@@ -14,7 +14,7 @@ class Player < Entity
     @r = 0.3
     @time = 0
     @sliding = false
-    @items = Array.new(8) { Item.none }
+    @items = Array.new(8) { Item::NONE }
   end
   
   def tick(up, down, left, right, turn_left, turn_right)
@@ -73,7 +73,7 @@ class Player < Entity
     was_sliding = @sliding
     @sliding = false
     
-    if on_block.is_a?(IceBlock) && get_selected_item != Item.skates
+    if on_block.is_a?(IceBlock) && get_selected_item != Item::SKATES
 			if @xa * @xa > @za * @za
 				@sliding = true
 				@za = 0
@@ -109,7 +109,7 @@ class Player < Entity
 		return if @item_use_time > 0
 		item = @items[@selected_slot]
 		
-		if item == Item.pistol
+		if item == Item::PISTOL
 			if @ammo > 0
 				Sound::SHOOT.play
 				@item_use_time = 10
@@ -119,7 +119,7 @@ class Player < Entity
 			return
 		end
 		
-		if item == Item.potion
+		if item == Item::POTION
 			if @potions > 0 && @health < 20
 				Sound::POTION.play
 				@item_use_time = 20
@@ -130,7 +130,7 @@ class Player < Entity
 			return
 		end
 		
-		@item_use_time = 10 if item == Item.key || item == Item.power_glove || item == Item.cutters
+		@item_use_time = 10 if item == Item::KEY || item == Item::POWER_GLOVE || item == Item::CUTTERS
 
 		xa = 2 * Math.sin(@rot)
 		za = 2 * Math.cos(@rot)
@@ -173,8 +173,8 @@ class Player < Entity
   end
   
   def add_loot(item)
-    @ammo += 20 if item == Item.pistol
-    @potions += 1 if item == Item.potion
+    @ammo += 20 if item == Item::PISTOL
+    @potions += 1 if item == Item::POTION
     
     @items.each do |my_item|
       if my_item == item
@@ -184,7 +184,7 @@ class Player < Entity
     end
     
     @items.each_with_index do |my_item, i|
-      if my_item == Item.none
+      if my_item == Item::NONE
         @items[i] = item
         @selected_slot = 1
         @item_use_time = 0
