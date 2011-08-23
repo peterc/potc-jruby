@@ -29,6 +29,7 @@ require 'gui/bitmap3d'
 require 'gui/screen'
 require 'gui/sprite'
 require 'gui/rubble_sprite'
+require 'gui/poof_sprite'
 
 require 'menu/menu'
 require 'menu/title_menu'
