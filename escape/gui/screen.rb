@@ -20,20 +20,17 @@ class Screen < Bitmap
       game.menu.render self
     end
     
-    unless has_focus
-      @pixels.length.times do |i|
-        @pixels[i] = (@pixels[i] & 0xfcfcfc) >> 2        
-      end
-      
-      if java.lang.System.current_time_millis / 450 % 2 != 0
-        msg = "Click to focus!"
-        draw_string msg, (@width - msg.length() * 6) / 2, @height / 3 + 4, 0xffffff
-      end
-    end
-    
-    
-    #0.upto(@width * @height - 1) do |i|      
-    #  @pixels[i] = rand(2).zero? ? 0x00ff0000 : 0x0000ff00
+    # Think it's a bad idea to bother detecting focus on a desktop-only version (for now) 
+    #
+    #unless has_focus
+    #  @pixels.length.times do |i|
+    #    @pixels[i] = (@pixels[i] & 0xfcfcfc) >> 2        
+    #  end
+    #  
+    #  if java.lang.System.current_time_millis / 450 % 2 != 0
+    #    msg = "Click to focus!"
+    #    draw_string msg, (@width - msg.length() * 6) / 2, @height / 3 + 4, 0xffffff
+    #  end
     #end
   end
 end
