@@ -61,7 +61,7 @@ class Component < Canvas
     frames = 0
     unprocessed_seconds = 0
     last_time = System.nano_time
-    seconds_per_tick = 1 / 61.0
+    seconds_per_tick = 1 / 60.0
     tick_count = 0
     
     request_focus
