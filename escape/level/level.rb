@@ -1,22 +1,23 @@
 class Level
-	SOLID_WALL = SolidBlock.new
-	WALL_COL = 0xB3CEE2
-	FLOOR_COL = 0x9CA09B
-	CEIL_COL = 0x9CA09B
-
-  attr_accessor :x_spawn, :y_spawn, :blocks, :width, :height, :entities, :game, :name, :player
+  attr_accessor :x_spawn, :y_spawn, :blocks, :width, :height, :entities, :game, :name, :player, :solid_wall
+  
+  def initialize
+    @wall_col = 0xB3CEE2
+    @floor_col = 0x9CA09B
+    @ceil_col = 0x9CA09B
+    @wall_tex = 0
+	  @floor_tex = 0
+	  @ceil_tex = 0
+	  @name = ''
+  end
 
   def init(game, name, w, h, pixels)
 	  @game = game
 	  @player = game.player
-	  @name = name              # beware: not in original
 	  
-	  @wall_tex = 0
-	  @floor_tex = 0
-	  @ceil_tex = 0
-	  
-	  SOLID_WALL.col = Art.get_col(WALL_COL)
-	  SOLID_WALL.tex = Art.get_col(@wall_tex)
+	  @solid_wall = SolidBlock.new	  
+	  @solid_wall.col = Art.get_col(@wall_col)
+	  @solid_wall.tex = Art.get_col(@wall_tex)
 
 	  @width = w
 	  @height = h
@@ -33,9 +34,9 @@ class Level
         block.tex = @wall_text if block.tex == -1
 				block.floor_tex = @floor_tex if block.floor_tex == -1
 				block.ceil_tex = @ceil_tex if block.ceil_tex == -1
-				block.col = Art.get_col(WALL_COL) if block.col == -1
-				block.floor_col = Art.get_col(FLOOR_COL) if block.floor_col == -1
-				block.ceil_col = Art.get_col(CEIL_COL) if block.ceil_col == -1
+				block.col = Art.get_col(@wall_col) if block.col == -1
+				block.floor_col = Art.get_col(@floor_col) if block.floor_col == -1
+				block.ceil_col = Art.get_col(@ceil_col) if block.ceil_col == -1
 				
 				blocks[x + y * w] = block
 				block.level = self
@@ -72,7 +73,7 @@ class Level
 			@y_spawn = y
 		end
 		
-		#add_entity BoulderEntity.new(x, y)   if col == 0xAA5500 
+		add_entity BoulderEntity.new(x, y)   if col == 0xAA5500 
 		add_entity BatEntity.new(x, y)       if col == 0xff0000 
 		#add_entity BatBossEntity.new(x, y)   if col == 0xff0001 
 		#add_entity OgreEntity.new(x, y)      if col == 0xff0002 
@@ -129,7 +130,7 @@ class Level
 	end
 
 	def get_block(x, y)
-		return SOLID_WALL if x < 0 || y < 0 || x >= @width || y >= @height
+		return @solid_wall if x < 0 || y < 0 || x >= @width || y >= @height
 		return @blocks[x + y * @width]
 	end
 

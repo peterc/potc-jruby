@@ -1,5 +1,6 @@
 class DungeonLevel < Level
 	def initialize
+	  super
 		@wall_col = 0xC64954
 		@floor_col = 0x8E4A51
 		@ceil_col = 0x8E4A51

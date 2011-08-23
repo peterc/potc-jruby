@@ -22,6 +22,6 @@ class LootBlock < Block
   
   def blocks(entity)
     return false if entity.is_a?(Player)
-    returns @blocks_motion
+    @blocks_motion
   end
 end

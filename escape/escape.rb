@@ -42,11 +42,13 @@ require 'menu/about_menu'
 require 'menu/pause_menu'
 require 'menu/got_loot_menu'
 
+require 'art'
+require 'sound'
+
 require 'entities/entity'
 require 'entities/player'
 require 'entities/bullet'
 require 'entities/enemy_entity'
 require 'entities/bat_entity'
+require 'entities/boulder_entity'
 
-require 'art'
-require 'sound'
