@@ -2,15 +2,12 @@ class Bitmap3D < Bitmap
   attr_accessor :z_buffer, :z_buffer_wall, :x_cam, :y_cam, :z_cam, :r_cos, :r_sin, :fov, :x_center, :y_center, :rot
   
   def initialize(width, height)
-    super(width, height)
-    
-    @z_buffer = Array.new(width * height, 0.0)
-    @z_buffer_wall = Array.new(width, 0.0)
+    super(width, height)    
   end
   
   def render(game)
-    @z_buffer_wall.fill(0.0)
-    @z_buffer.fill(10000)
+    @z_buffer = Array.new(width * height, 10000)
+    @z_buffer_wall = Array.new(width, 0.0)
     
     @rot = game.player.rot
     @x_cam = game.player.x - Math.sin(@rot) * 0.3
@@ -181,18 +178,18 @@ class Bitmap3D < Bitmap
 
 			@width.times do |x|
 				next if @z_buffer[x + y * @width] <= zd
-
+      
 				xd = (@x_center - x) / fov
 				xd *= zd
-
+      
 				xx = xd * @r_cos + zd * @r_sin + (@x_cam + 0.5) * 8
 				yy = zd * @r_cos - xd * @r_sin + (@y_cam + 0.5) * 8
-
+      
 				x_pix = (xx * 2).to_i
 				y_pix = (yy * 2).to_i
 				x_tile = x_pix >> 4
 				y_tile = y_pix >> 4
-
+      
 				block = level.get_block(x_tile, y_tile)
 				col = block.floor_col
 				tex = block.floor_tex
@@ -200,7 +197,7 @@ class Bitmap3D < Bitmap
 					col = block.ceil_col
 					tex = block.ceil_tex
 				end
-
+      
 				if tex < 0
 					@z_buffer[x + y * @width] = -1
 				else
@@ -269,7 +266,7 @@ class Bitmap3D < Bitmap
 			else
 				xp = i % @width
 				yp = (i / @width) * 14
-
+        
 				xx = ((i % @width - @width / 2.0) / @width)
 				col = @pixels[i]
 				brightness = (300 - zl * 6 * (xx * xx * 2 + 1)).to_i

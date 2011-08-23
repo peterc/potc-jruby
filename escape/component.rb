@@ -121,11 +121,14 @@ class Component < Canvas
     @screen.render(@game, has_focus)
     
     0.upto(WIDTH * HEIGHT - 1) do |i|
-      @pixels[i] = @screen.pixels[i]
+      @pixels[i] = @screen.pixels[i]  
     end
+    # Not having much luck here but leaving for now..
+    #@img.raster.set_pixels(0, 0, WIDTH, HEIGHT, @screen.pixels)
+    #@img.raster.set_data_elements(0, 0, WIDTH, HEIGHT, @screen.pixels)
     
     g = bs.draw_graphics
-    g.fill_rect 0, 0, get_width, get_height
+    g.fill_rect 0, 0, WIDTH, HEIGHT
     g.draw_image @img, 0, 0, WIDTH * SCALE, HEIGHT * SCALE, nil
     g.dispose
     bs.show
