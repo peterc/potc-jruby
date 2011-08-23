@@ -9,10 +9,14 @@ require 'input_handler'
 require 'component'
 require 'game'
 
+require 'entities/item'
+
 require 'level/block/block'
 require 'level/block/solid_block'
 require 'level/block/loot_block'
 require 'level/block/chest_block'
+require 'level/block/water_block'
+require 'level/block/ice_block'
 
 require 'level/level'
 require 'level/start_level'

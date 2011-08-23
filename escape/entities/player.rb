@@ -2,6 +2,7 @@ class Player < Entity
   attr_accessor :bob, :bob_phase, :turn_bob, :selected_slot, :item_use_time, :y, :ya, :hurt_time, :health, :keys, :loot, :dead, :dead_time, :ammo, :potions, :last_block, :sliding
   
   def initialize
+    super
     @selected_slot = 0
     @hurt_time = 0
     @health = 20
@@ -12,7 +13,11 @@ class Player < Entity
     @ammo = 0
     @potions = 0
     @r = 0.3
+    @y = 0.0
+    @bob = @bob_phase = @turn_bob = 0.0
+    @ya = 0.0
     @time = 0
+    @item_use_time = 0
     @sliding = false
     @items = Array.new(8) { Item::NONE }
   end
@@ -69,7 +74,7 @@ class Player < Entity
     @turn_bob *= 0.8
     @turn_bob += @rota
     @bob += Math.sqrt(xm * xm + zm * zm)
-    @bob_phase += Math.sqrt(xm * xm + zm * zm) * on_block.getWalkSpeed(self)
+    @bob_phase += Math.sqrt(xm * xm + zm * zm) * on_block.get_walk_speed(self)
     was_sliding = @sliding
     @sliding = false
     

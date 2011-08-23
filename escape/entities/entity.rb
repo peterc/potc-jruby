@@ -8,6 +8,7 @@ class Entity
     @removed = false
     @flying = false
     @level = nil
+    @xa = @za = @x = @z = @rot = @rota = 0.0
   end
   
   def update_pos
