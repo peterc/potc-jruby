@@ -17,11 +17,13 @@ require 'level/block/loot_block'
 require 'level/block/chest_block'
 require 'level/block/water_block'
 require 'level/block/ice_block'
+require 'level/block/door_block'
 
 require 'level/level'
 require 'level/start_level'
 
 require 'gui/bitmap'
+require 'gui/bitmap3d'
 require 'gui/screen'
 require 'gui/sprite'
 require 'gui/rubble_sprite'

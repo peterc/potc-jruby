@@ -1,5 +1,5 @@
 class Block
-  attr_accessor :tex, :col, :id, :x, :y, :level, :sprites, :entities, :floor_tex, :ceil_tex, :floor_col, :ceil_col
+  attr_accessor :tex, :col, :id, :x, :y, :level, :sprites, :entities, :floor_tex, :ceil_tex, :floor_col, :ceil_col, :messages
   
   def solid_wall
     SolidBlock.new
