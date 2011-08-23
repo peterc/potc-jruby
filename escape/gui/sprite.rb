@@ -5,7 +5,7 @@ class Sprite
     @x = x
     @y = y
     @z = z
-    @tex = text
+    @tex = tex
     @col = color || 0x202020
     @removed = false
   end

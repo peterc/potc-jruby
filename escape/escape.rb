@@ -9,6 +9,14 @@ require 'input_handler'
 require 'component'
 require 'game'
 
+require 'level/block/block'
+require 'level/block/solid_block'
+require 'level/block/loot_block'
+require 'level/block/chest_block'
+
+require 'level/level'
+require 'level/start_level'
+
 require 'gui/bitmap'
 require 'gui/screen'
 require 'gui/sprite'
@@ -19,6 +27,9 @@ require 'menu/title_menu'
 require 'menu/instructions_menu'
 require 'menu/about_menu'
 require 'menu/pause_menu'
+
+require 'entities/entity'
+require 'entities/player'
 
 require 'art'
 require 'sound'

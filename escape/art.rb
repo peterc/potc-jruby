@@ -10,11 +10,9 @@ class Art < java.lang.Object
     h = img.height
     
     result = Bitmap.new(w, h)
-    #result.pixels = img.getRGB(0, 0, w, h, nil, 0, w)
     
     h.times do |y|
       w.times do |x|
-        #puts img.getRGB(x, y) + (2 ** 32)
         result.pixels[y * w + x] = img.getRGB(x, y)
       end
     end
