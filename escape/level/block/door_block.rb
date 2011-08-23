@@ -27,7 +27,7 @@ class DoorBlock < Block
     
     open_limit = 7 / 8.0
     if @openness < open_limit && !@open && !@blocks_motion
-      if @level.contains_blocking_entity(@x - 0.5, @y - 0.5, @x + 0.5, @y + 0.5))
+      if @level.contains_blocking_entity(@x - 0.5, @y - 0.5, @x + 0.5, @y + 0.5)
 				@openness = open_limit
 				return
 			end
