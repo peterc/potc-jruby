@@ -15,4 +15,5 @@ require 'gui/rubble_sprite'
 
 require 'menu/menu'
 require 'menu/title_menu'
+require 'menu/about_menu'
 require 'art'
