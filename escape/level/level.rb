@@ -17,6 +17,7 @@ class Level
 	  
 	  SOLID_WALL.col = Art.get_col(WALL_COL)
 	  SOLID_WALL.tex = Art.get_col(@wall_tex)
+
 	  @width = w
 	  @height = h
 	  @blocks = Array.new(w * h) { Block.new }
@@ -105,10 +106,10 @@ class Level
 		return SolidBlock.new         if col == 0x93FF9B 
 		#return PitBlock.new           if col == 0x009300
 		return SolidBlock.new         if col == 0xFFFFFF 
-		#return VanishBlock.new        if col == 0x00FFFF 
+		return VanishBlock.new        if col == 0x00FFFF 
 		return ChestBlock.new         if col == 0xFFFF64 
 		#return WaterBlock.new         if col == 0x0000FF 
-		#return TorchBlock.new         if col == 0xFF3A02 
+		return TorchBlock.new         if col == 0xFF3A02 
 		#return BarsBlock.new          if col == 0x4C4C4C 
 		#return LadderBlock.new(false) if col == 0xFF66FF 
 		#return LadderBlock.new(true)  if col == 0x9E009E 

@@ -18,6 +18,8 @@ require 'level/block/chest_block'
 require 'level/block/water_block'
 require 'level/block/ice_block'
 require 'level/block/door_block'
+require 'level/block/vanish_block'
+require 'level/block/torch_block'
 
 require 'level/level'
 require 'level/start_level'

@@ -1,5 +1,5 @@
 class Entity
-  attr_accessor :x, :z, :r, :rot, :xa, :za, :rota, :r, :flying, :removed, :x_tileo, :z_tileo, :level
+  attr_accessor :x, :z, :r, :rot, :xa, :za, :rota, :r, :flying, :removed, :x_tileo, :z_tileo, :level, :sprites
   
   def initialize
     @r = 0.4
@@ -8,6 +8,7 @@ class Entity
     @removed = false
     @flying = false
     @level = nil
+    @sprites = []
     @xa = @za = @x = @z = @rot = @rota = 0.0
   end
   
