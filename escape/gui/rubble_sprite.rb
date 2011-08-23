@@ -7,14 +7,14 @@ class RubbleSprite < Sprite
   end
   
   def tick
-    x += xa * 0.03
-    y += ya * 0.03
-    z += za * 0.03
-    ya -= -0.1
-    if y < 0
-      y = 0
-      xa *= 0.8
-      za *= 0.8
+    @x += @xa * 0.03
+    @y += @ya * 0.03
+    @z += @za * 0.03
+    @ya -= -0.1
+    if @y < 0
+      @y = 0
+      @xa *= 0.8
+      @za *= 0.8
       @removed = true if rand < 0.04
     end
   end

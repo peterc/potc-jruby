@@ -141,23 +141,24 @@ class Player < Entity
 		za = 2 * Math.cos(@rot)
 
 		rr = 3
-		xc = (x + 0.5).to_i
-		zc = (z + 0.5).to_i
+		xc = (@x + 0.5).to_i
+		zc = (@z + 0.5).to_i
 		
 		possible_hits = []
-		
-		(zc - rr).upto(zc + rr) do |z|
-			(xc - rr).upto(xc + rr) do |x|
-				@level.get_block(x, z).entities.each do |e|
+				    
+		(zc - rr).upto(zc + rr) do |z2|
+			(xc - rr).upto(xc + rr) do |x2|
+				@level.get_block(x2, z2).entities.each do |e|
 					possible_hits << e unless e == self
 				end
 			end
 		end
 
     divs = 100
+
 		divs.times do |i|
-			xx = @x + @xa * i / divs
-			zz = @z + @za * i / divs
+			xx = @x + xa * i / divs
+			zz = @z + za * i / divs
 			possible_hits.each { |e| return if e.contains(xx, zz) && e.use(self, @items[@selected_slot]) }
 			xt = (xx + 0.5).to_i
 			zt = (zz + 0.5).to_i

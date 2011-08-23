@@ -36,6 +36,7 @@ require 'menu/title_menu'
 require 'menu/instructions_menu'
 require 'menu/about_menu'
 require 'menu/pause_menu'
+require 'menu/got_loot_menu'
 
 require 'entities/entity'
 require 'entities/player'
