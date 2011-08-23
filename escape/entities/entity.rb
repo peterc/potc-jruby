@@ -1,5 +1,5 @@
 class Entity
-  attr_accessor :x, :z, :rot, :xa, :za, :rota, :r, :flying, :removed, :x_tileo, :z_tileo, :level
+  attr_accessor :x, :z, :r, :rot, :xa, :za, :rota, :r, :flying, :removed, :x_tileo, :z_tileo, :level
   
   def initialize
     @r = 0.4
@@ -56,5 +56,51 @@ class Entity
   
   def is_free(xx, yy)
     # TODO: Pick up here
+    
+    
+    
+    
+    
+    
   end
+  
+  def collide(entity); end
+  
+  def blocks(entity, x2, z2, r2)
+    return false if entity.is_a?(Bullet) && entity.owner == self  
+    
+    # TODO: Can be tightened down to a single expression!
+    return false if @x + @r <= x2 - r2
+		return false if @x - @r >= x2 + r2
+		return false if @z + @r <= z2 - r2
+		return false if @z - @r >= z2 + r2
+    
+		true    
+  end
+  
+  def contains(x2, z2)
+    # TODO: Can be tightened down to a single expression!
+    return false if @x + @r <= x2
+		return false if @x - @r >= x2
+		return false if @z + @r <= z2
+		return false if @z - @r >= z2
+    
+		true
+  end
+  
+  def is_inside(x0, z0, x1, z1)
+    # TODO: Can be tightened down to a single expression!
+    return false if @x + @r <= x0
+		return false if @x - @r >= x1
+		return false if @z + @r <= z0
+		return false if @z - @r >= z1
+    
+		true
+  end
+  
+  def use(source, item)
+    false
+  end
+  
+  def tick; end
 end
