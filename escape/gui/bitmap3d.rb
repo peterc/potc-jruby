@@ -212,7 +212,51 @@ class Bitmap3D < Bitmap
   end
   
   def render_sprite(x, y, z, tex, color)
-    # TODO
+    xc = (x - @x_cam) * 2 - @r_sin * 0.2
+    yc = (y - @z_cam) * 2
+    zc = (z - @y_cam) * 2 - @r_cos * 0.2
+
+    xx = xc * @r_cos - zc * @r_sin
+    yy = yc
+    zz = zc * @r_cos + xc * @r_sin
+
+    return if zz < 0.1
+
+    x_pixel = @x_center - (xx / zz * fov)
+    y_pixel = yy / zz * fov + @y_center
+
+    x_pixel0 = x_pixel - @height / zz
+    x_pixel1 = x_pixel + @height / zz
+
+    y_pixel0 = y_pixel - @height / zz
+    y_pixel1 = y_pixel + @height / zz
+
+    xp0 = x_pixel0.ceil
+    xp1 = x_pixel1.ceil
+    yp0 = y_pixel0.ceil
+    yp1 = y_pixel1.ceil
+
+    xp0 = 0 if xp0 < 0
+    xp1 = @width if xp1 > @width
+    yp0 = 0 if yp0 < 0
+    yp1 = @height if yp1 > @height
+    zz *= 4
+
+    yp0.upto(yp1 - 1) do |yp|
+    	ypr = (yp - y_pixel0) / (y_pixel1 - y_pixel0)
+    	yt = (ypr * 16).to_i
+    	xp0.upto(xp1 - 1) do |xp|
+    		xpr = (xp - x_pixel0) / (x_pixel1 - x_pixel0)
+    		xt = (xpr * 16).to_i
+    		if (@z_buffer[xp + yp * @width] > zz)
+    			col = Art::SPRITES.pixels[(xt + tex % 8 * 16) + (yt + (tex / 8) * 16) * 128]
+    			if col >= 0
+    				@pixels[xp + yp * @width] = col * color
+    				@z_buffer[xp + yp * @width] = zz
+    			end
+    		end
+    	end
+    end
   end
   
   def post_process(level)
