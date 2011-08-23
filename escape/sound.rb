@@ -26,7 +26,7 @@ class Sound
     end
   end
   
-  ALTAR = load_sound('/snd/altar.wav')
-  CLICK1 = load_sound('/snd/click.wav')
-  CLICK2 = load_sound('/snd/click2.wav')
+  %w{altar bosskill click1 click2 hit hurt hurt2 kill death splash key pickup roll shoot treasure crumble slide cut thud ladder potion}.each do |name|
+    const_set name.upcase, load_sound("/snd/#{name}.wav")
+  end
 end
