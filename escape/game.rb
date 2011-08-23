@@ -1,7 +1,7 @@
 java_import java.awt.event.KeyEvent
 
 class Game
-  attr_accessor :menu, :player, :time, :level
+  attr_accessor :menu, :player, :time, :level, :pause_time
   
   def initialize
     @pause_time = 0

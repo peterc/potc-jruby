@@ -1,5 +1,5 @@
 class Player < Entity
-  attr_accessor :bob, :bob_phase, :turn_bob, :selected_slot, :item_use_time, :y, :ya, :hurt_time, :health, :keys, :loot, :dead, :dead_time, :ammo, :potions, :last_block, :sliding
+  attr_accessor :bob, :bob_phase, :turn_bob, :selected_slot, :item_use_time, :y, :ya, :hurt_time, :health, :keys, :loot, :dead, :dead_time, :ammo, :potions, :last_block, :sliding, :items
   
   def initialize
     super

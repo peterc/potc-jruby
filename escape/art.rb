@@ -40,6 +40,10 @@ class Art < java.lang.Object
 		(r << 16 | g << 8 | b)
 	end
   
-  FONT = load_bitmap("/tex/font.png")
+  
+  %w{walls floors sprites font panel items sky}.each do |name|
+    const_set name.upcase, load_bitmap("/tex/#{name}.png")
+  end
+
   LOGO = load_bitmap("/gui/logo.png")
 end
