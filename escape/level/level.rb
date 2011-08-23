@@ -103,7 +103,7 @@ class Level
 	def get_block_by_color(x, y, col)
 	  # This could do with being made more Ruby-like! :-)
 		return SolidBlock.new         if col == 0x93FF9B 
-		#return PitBlock.new           if col == 0x009300 
+		#return PitBlock.new           if col == 0x009300
 		return SolidBlock.new         if col == 0xFFFFFF 
 		#return VanishBlock.new        if col == 0x00FFFF 
 		return ChestBlock.new         if col == 0xFFFF64 
