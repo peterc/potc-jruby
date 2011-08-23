@@ -106,7 +106,7 @@ class Component < Canvas
   end
   
   def render
-    if has_focus != has_focus
+    if had_focus != has_focus
       has_focus = !had_focus
       set_cursor had_focus ? @empty_cursor : @default_cursor
     end

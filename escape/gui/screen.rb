@@ -31,6 +31,7 @@ class Screen < Bitmap
       end
     end
     
+    
     #0.upto(@width * @height - 1) do |i|      
     #  @pixels[i] = rand(2).zero? ? 0x00ff0000 : 0x0000ff00
     #end
