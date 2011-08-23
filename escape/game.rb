@@ -10,6 +10,32 @@ class Game
     @menu = TitleMenu.new
   end
   
+  def new_game
+    Level.clear
+    @level = Level.load_level(self, "start")
+    
+    @player = Player.new
+    @player.level = @level
+    @level.player = @player
+    @player.x = @level.x_spawn
+    @player.z = @level.y_spawn
+    @level.add_entity(@player)
+    @player.rot = Math::PI + 0.4
+  end
+  
+  def switch_level(name, id)
+    @pause_time = 30
+    @level.remove_entity_immediately(@player)
+    @level = Level.load_level(self, name)
+    @level.find_spawn(id)
+    @player.x = @level.x_spawn
+    @player.z = @level.y_spawn
+    @level.get_block(@level.x_spawn, @level.y_spawn).wait = true
+    @player.x += Math.sin(@player.rot) * 0.2
+    @player.z += Math.cos(@player.rot) * 0.2
+    @level.add_entity(@player)
+  end
+  
   def tick(keys)
 		if @pause_time > 0
 			@pauseTime -= 1
@@ -61,5 +87,20 @@ class Game
 			level.tick
 		end
 	end
-  
+	
+	def get_loot(item)
+	  @player.add_loot(item)
+	end
+	
+	def win(player)
+	  set_menu(WinMenu.new(player))
+	end
+	
+	def set_menu(menu)
+	  @menu = menu
+	end
+	
+	def lose(player)
+	  set_menu(LoseMenu.new(player))
+	end
 end
