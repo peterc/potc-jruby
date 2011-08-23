@@ -11,6 +11,12 @@ Porting is still in progress and I'm only as far as the main menu so far. But a 
 To run this code, get JRuby installed (rvm install jruby?) and then just run (from the root folder):
 
     ruby escape.rb
+    
+## Credits
+
+_Prelude of the Chambered_ is a game by Markus "Notch" Persson and Mojang
+
+This JRuby port is by Peter Cooper
 
 ## License
 
