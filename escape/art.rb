@@ -15,7 +15,7 @@ class Art < java.lang.Object
     result.pixels.length.times do |i|
       inp = result.pixels[i]
     
-      col = (inp & 0xf) 
+      col = (inp.to_i & 0xf) 
       col = -1 if inp == 0xffff00ff
       result.pixels[i] = col
     end
@@ -37,4 +37,6 @@ class Art < java.lang.Object
   
   FONT = load_bitmap("/tex/font.png")
   LOGO = load_bitmap("/gui/logo.png")
+  
+  p LOGO.pixels
 end
