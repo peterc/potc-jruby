@@ -37,6 +37,7 @@ class Component < Canvas
     @empty_cursor = Toolkit.default_toolkit.create_custom_cursor(BufferedImage.new(16, 16, BufferedImage::TYPE_INT_ARGB), Point.new(0, 0), "empty")
     @default_cursor = cursor
     @running = false
+    @had_focus = false
   end
   
   def start
@@ -106,9 +107,9 @@ class Component < Canvas
   end
   
   def render
-    if had_focus != has_focus
-      has_focus = !had_focus
-      set_cursor had_focus ? @empty_cursor : @default_cursor
+    if @had_focus != has_focus
+      has_focus = !@had_focus
+      set_cursor @had_focus ? @empty_cursor : @default_cursor
     end
     
     bs = get_buffer_strategy
