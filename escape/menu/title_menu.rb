@@ -26,10 +26,10 @@ class TitleMenu < Menu
 	def tick(game, up, down, left, right, use)
 		if @first_tick
 			@first_tick = false
-			#Sound.altar.play()
+			Sound::ALTAR.play()
 		end
 		
-		#Sound.click2.play if up || down
+		Sound::CLICK2.play if up || down
 		@selected -= 1 if up
 		@selected += 1 if down
 
@@ -37,7 +37,7 @@ class TitleMenu < Menu
 		@selected = @options.length - 1 if @selected >= @options.length
 		
 		if use
-			#Sound.click1.play()
+			Sound::CLICK1.play
 			if @selected == 0
 				game.menu = nil
 				game.new_game

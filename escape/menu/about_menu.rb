@@ -31,7 +31,7 @@ class AboutMenu < Menu
     if @tick_delay > 0
       @tick_delay -= 1 
     elsif use
-      # Sound.click1.play
+      Sound::CLICK1.play
       game.set_menu(TitleMenu.new)
     end
   end

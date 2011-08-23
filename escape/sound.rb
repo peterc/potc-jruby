@@ -1,3 +1,5 @@
+java_import javax.sound.sampled.AudioSystem
+
 class Sound
   attr_accessor :clip
   
@@ -8,6 +10,7 @@ class Sound
     ais = AudioSystem.get_audio_input_stream(url)
     clip = AudioSystem.clip
     clip.open(ais)
+    clip.extend JRuby::Synchronized
     sound.clip = clip
     
     sound
@@ -15,7 +18,15 @@ class Sound
   
   def play
     if clip
-      # TODO
+      Thread.new do
+        clip.stop
+        clip.frame_position = 0
+        clip.start
+      end
     end
   end
+  
+  ALTAR = load_sound('/snd/altar.wav')
+  CLICK1 = load_sound('/snd/click.wav')
+  CLICK2 = load_sound('/snd/click2.wav')
 end
