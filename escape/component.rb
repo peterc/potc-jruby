@@ -114,7 +114,7 @@ class Component < Canvas
     
     bs = get_buffer_strategy
     unless bs
-      create_buffer_strategy 3
+      create_buffer_strategy 2
       return
     end
     
