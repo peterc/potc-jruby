@@ -38,7 +38,8 @@ class Bitmap3D < Bitmap
 
 				if c.is_a?(DoorBlock)
 					rr = 1 / 8.0
-					openness = 1 - c.openness * 7 / 8
+					openness = 1 - c.openness * 7 / 8.0
+					
 					if e.solid_render
 						render_wall(xb + openness, zb + 0.5 - rr, xb, zb + 0.5 - rr, c.tex, (c.col & 0xfefefe) >> 1, 0, openness)
 						render_wall(xb, zb + 0.5 + rr, xb + openness, zb + 0.5 + rr, c.tex, (c.col & 0xfefefe) >> 1, openness, 0)

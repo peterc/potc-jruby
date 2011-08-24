@@ -4,6 +4,7 @@ class DoorBlock < Block
   def initialize
     super
     @tex = 4
+    @open = false
     @openness = 0
     @solid_render = false
   end
