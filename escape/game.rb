@@ -59,13 +59,15 @@ class Game
     
 		use = keys[KeyEvent::VK_SPACE]
 
-		8.times do |i|
-			next unless keys[KeyEvent::VK_1 + i]
+    i = 0
+    while i < 8
+			next(i += 1) unless keys[KeyEvent::VK_1 + i]
 			keys[KeyEvent::VK_1 + i] = false
 			if @player
 			  @player.selected_slot = i
 			  @player.item_use_time = 0
 			end
+      i += 1
 		end
 
 		if keys[KeyEvent::VK_ESCAPE]
