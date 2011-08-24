@@ -16,13 +16,15 @@ class Component < Canvas
   WIDTH = 160
   HEIGHT = 120
   SCALE = 4
+  SCALED_WIDTH = WIDTH * SCALE
+  SCALED_HEIGHT = HEIGHT * SCALE
   
   attr_accessor :running
   
   def initialize
     super
     
-    size = Dimension.new(WIDTH * SCALE, HEIGHT * SCALE)
+    size = Dimension.new(SCALED_WIDTH, SCALED_HEIGHT)
     self.minimum_size = self.maximum_size = self.preferred_size = self.size = size
 
     @game = Game.new
@@ -84,7 +86,7 @@ class Component < Canvas
         tick_count += 1
         if tick_count % 60 == 0
           System.out.println frames.to_s + " fps"
-          last_time += 1000
+          #last_time += 1000
           frames = 0
         end
       end
@@ -102,8 +104,28 @@ class Component < Canvas
     end
   end
   
+  # A place for experiments - this will run ticks and renders together flat out at max 60 fps
+  def naive_run
+    frames = 0
+    last_time = Time.now.to_f
+    ticks = 0
+    request_focus
+    
+    while running
+      now = Time.now.to_f
+      passed_time = now - last_time
+      
+      if passed_time >= 0.0167
+        tick
+        render
+        ticks += 1
+        last_time = now
+      end
+    end
+  end
+  
   def tick
-    @game.tick(@input_handler.keys) if has_focus
+    @game.tick(@input_handler.keys)
   end
   
   def render
@@ -131,7 +153,7 @@ class Component < Canvas
     
     g = bs.draw_graphics
     g.fill_rect 0, 0, WIDTH, HEIGHT
-    g.draw_image @img, 0, 0, WIDTH * SCALE, HEIGHT * SCALE, nil
+    g.draw_image @img, 0, 0, SCALED_WIDTH, SCALED_HEIGHT, nil
     g.dispose
     bs.show
   end
