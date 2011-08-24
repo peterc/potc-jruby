@@ -120,8 +120,10 @@ class Component < Canvas
     
     @screen.render(@game, has_focus)
     
-    0.upto(WIDTH * HEIGHT - 1) do |i|
-      @pixels[i] = @screen.pixels[i]  
+    i, max_i = 0, WIDTH * HEIGHT - 1
+    while i <= max_i
+      @pixels[i] = @screen.pixels[i]
+      i += 1
     end
     # Not having much luck here but leaving for now..
     #@img.raster.set_pixels(0, 0, WIDTH, HEIGHT, @screen.pixels)

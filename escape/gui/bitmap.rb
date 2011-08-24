@@ -15,68 +15,84 @@ class Bitmap
   end
   
   def draw(bitmap, x_offs, y_offs)
-    bitmap.height.times do |y|
+    y, max_y = 0, bitmap.height
+    while y < max_y
 			y_pix = y + y_offs
-			next if (y_pix < 0 || y_pix >= @height)
+			next(y += 1) if (y_pix < 0 || y_pix >= @height)
 
-      bitmap.width.times do |x|
+      x, max_x = 0, bitmap.width
+      while x < max_x
 				x_pix = x + x_offs
-				next if (x_pix < 0 || x_pix >= @width)
+				next(x += 1) if (x_pix < 0 || x_pix >= @width)
 
 				src = bitmap.pixels[x + y * bitmap.width]
 				@pixels[x_pix + y_pix * width] = src
+        x += 1
 			end
+      y += 1
 		end
 	end
 	
 	def flip_draw(bitmap, x_offs, y_offs)
-    bitmap.height.times do |y|
+    y, max_y = 0, bitmap.height
+    while y < max_y
 			y_pix = y + y_offs
-			next if (y_pix < 0 || y_pix >= @height)
+			next(y += 1) if (y_pix < 0 || y_pix >= @height)
 
-      bitmap.width.times do |x|
+      x, max_x = 0, bitmap.width
+      while x < max_x
 				x_pix = x_offs + bitmap.width - x - 1
-				next if (x_pix < 0 || x_pix >= @width)
+				next(x += 1) if (x_pix < 0 || x_pix >= @width)
 
 				src = bitmap.pixels[x + y * bitmap.width]
 				@pixels[x_pix + y_pix * width] = src
+        x += 1
 			end
+      y += 1
 		end
 	end
   
   def draw_bitmap(bitmap, x_offs, y_offs, xo, yo, w, h, col)
-    h.times do |y|
+    y, max_y = 0, h
+    while y < max_y
 			y_pix = y + y_offs
-			next if (y_pix < 0 || y_pix >= @height)
+			next(y += 1) if (y_pix < 0 || y_pix >= @height)
 
-      w.times do |x|
+      x, max_x = 0, w
+      while x < max_x
 				x_pix = x + x_offs
-				next if (x_pix < 0 || x_pix >= @width)
+				next(x += 1) if (x_pix < 0 || x_pix >= @width)
 
 				src = bitmap.pixels[(x + xo) + (y + yo) * bitmap.width]
 
 				if src >= 0
 					@pixels[x_pix + y_pix * width] = src * col
 				end
+        x += 1
 			end
+      y += 1
 		end
 	end
 	
 	def scale_draw(bitmap, scale, x_offs, y_offs, xo, yo, w, h, col)
-    (h * scale).times do |y|
+    y, max_y = 0, (h * scale)
+    while y < max_y
 			y_pix = y + y_offs
-			next if (y_pix < 0 || y_pix >= @height)
+			next(y += 1) if (y_pix < 0 || y_pix >= @height)
 
-      (w * scale).times do |x|
+      x, max_x = 0, (w * scale)
+      while x < max_x
 				x_pix = x + x_offs
-				next if (x_pix < 0 || x_pix >= @width)
+				next(x += 1) if (x_pix < 0 || x_pix >= @width)
 
 				src = bitmap.pixels[(x / scale + xo) + (y / scale + yo) * bitmap.width]
 
 				if src >= 0
 					@pixels[x_pix + y_pix * width] = src * col
 				end
+        x += 1
 			end
+      y += 1
 		end
 	end
 	
