@@ -20,7 +20,13 @@ To run this code, get JRuby installed (rvm install jruby?) and then just run (fr
 
 _Prelude of the Chambered_ is a game by Markus "Notch" Persson and Mojang
 
-This JRuby port is by Peter Cooper
+This JRuby port was started by, and is maintained by, Peter Cooper - http://peterc.org/
+
+Contributions by:
+
+* Charles Nutter (@headius)
+* Tim Felgentreff (github:timfel)
+* Andrew Chalkley (@chalkers)
 
 ## License
 
