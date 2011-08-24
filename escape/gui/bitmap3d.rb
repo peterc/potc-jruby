@@ -28,8 +28,10 @@ class Bitmap3D < Bitmap
     x_center = @x_cam.floor
     z_center = @y_cam.floor
     
-    (z_center - r).upto(z_center + r) do |zb|
-			(x_center - r).upto(x_center + r) do |xb|
+    zb, max_zb = (z_center - r), (z_center + r)
+    while zb <= max_zb
+      xb, max_xb = (x_center - r), (x_center + r)
+      while xb <= max_xb
 				c = level.get_block(xb, zb)
 				e = level.get_block(xb + 1, zb)
 				s = level.get_block(xb, zb + 1)
@@ -55,11 +57,15 @@ class Bitmap3D < Bitmap
 					render_wall(xb + 1, zb, xb + 1, zb + 1, e.tex, e.col) if e.solid_render
 					render_wall(xb + 1, zb + 1, xb, zb + 1, s.tex, (s.col & 0xfefefe) >> 1) if s.solid_render
         end
+        xb += 1
 			end
+      zb += 1
 		end
-		
-		(z_center - r).upto(z_center + r) do |zb|
-			(x_center - r).upto(x_center + r) do |xb|
+    
+    zb, max_zb = (z_center - r), (z_center + r)
+    while zb <= max_zb
+      xb, max_xb = (x_center - r), (x_center + r)
+      while xb <= max_xb
 				c = level.get_block(xb, zb)
     
 				c.entities.each do |e|
@@ -71,7 +77,9 @@ class Bitmap3D < Bitmap
 				c.sprites.each do |sprite|
 					render_sprite(xb + sprite.x, 0 - sprite.y, zb + sprite.z, sprite.tex, sprite.col)
 				end
+        xb += 1
 			end
+      zb += 1
 		end
 
 		render_floor level
@@ -138,11 +146,12 @@ class Bitmap3D < Bitmap
     ixta = xt1 * iz1 - ixt0
     iw = 1 / (x_pixel1 - x_pixel0)
 
-    xp0.upto(xp1 - 1) do |x|
+    x, max_x = xp0, xp1 - 1
+    while x <= max_x
     	pr = (x - x_pixel0) * iw
     	iz = iz0 + iza * pr
 
-    	next if @z_buffer_wall[x] > iz
+    	next(x += 1) if @z_buffer_wall[x] > iz
     	@z_buffer_wall[x] = iz
     	x_tex = ((ixt0 + ixta * pr) / iz).to_i
 
@@ -156,17 +165,21 @@ class Bitmap3D < Bitmap
 
     	ih = 1 / (y_pixel1 - y_pixel0)
 
-    	yp0.upto(yp1 - 1) do |y|
+      y, max_y = yp0, yp1 - 1
+      while y <= max_y
     		pry = (y - y_pixel0) * ih
     		y_tex = (16 * pry).to_i
     		@pixels[x + y * @width] = (Art::WALLS.pixels[((x_tex) + (tex % 8) * 16) + (y_tex + tex / 8 * 16) * 128] * color)
     		@z_buffer[x + y * @width] = 1 / iz * 4
+        y += 1
     	end
+      x += 1
     end
   end
   
   def render_floor(level)
-    @height.times do |y|
+    y, max_y = 0, @height
+    while y < max_y
 			yd = ((y + 0.5) - @y_center) / @fov
 
 			floor = true
@@ -176,9 +189,10 @@ class Bitmap3D < Bitmap
 				zd = (4 + @z_cam * 8) / -yd
 			end
 
-			@width.times do |x|
-				next if @z_buffer[x + y * @width] <= zd
-      
+      x, max_x = 0, @width
+      while x < max_x
+				next(x += 1) if @z_buffer[x + y * @width] <= zd
+
 				xd = (@x_center - x) / fov
 				xd *= zd
       
@@ -204,7 +218,9 @@ class Bitmap3D < Bitmap
 					@z_buffer[x + y * @width] = zd
 					@pixels[x + y * @width] = Art::FLOORS.pixels[((x_pix & 15) + (tex % 8) * 16) + ((y_pix & 15) + (tex / 8) * 16) * 128] * col
 				end
+        x += 1
 			end
+      y += 1
 		end
   end
   
@@ -239,10 +255,12 @@ class Bitmap3D < Bitmap
     yp1 = @height if yp1 > @height
     zz *= 4
 
-    yp0.upto(yp1 - 1) do |yp|
+    yp, max_yp = yp0, yp1 - 1
+    while yp <= max_yp
     	ypr = (yp - y_pixel0) / (y_pixel1 - y_pixel0)
     	yt = (ypr * 16).to_i
-    	xp0.upto(xp1 - 1) do |xp|
+      xp, max_xp = xp0, xp1 - 1
+      while xp <= max_xp
     		xpr = (xp - x_pixel0) / (x_pixel1 - x_pixel0)
     		xt = (xpr * 16).to_i
     		if (@z_buffer[xp + yp * @width] > zz)
@@ -252,12 +270,15 @@ class Bitmap3D < Bitmap
     				@z_buffer[xp + yp * @width] = zz
     			end
     		end
+        xp += 1
     	end
+      yp += 1
     end
   end
   
   def post_process(level)
-    (width * height).times do |i|
+    i, max = 0, width * height
+    while i < max
 			zl = @z_buffer[i]
 			if zl < 0
 				xx = ((i % width) - rot * 512 / (Math::PI * 2)).floor & 511
@@ -284,6 +305,7 @@ class Bitmap3D < Bitmap
 
 				@pixels[i] = r << 16 | g << 8 | b
 			end
+      i += 1
 		end
   end
 end
