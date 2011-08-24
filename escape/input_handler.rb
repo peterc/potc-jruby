@@ -26,7 +26,7 @@ class InputHandler
   def focus_gained(arg); end
   
   def focus_lost(arg)
-    keys.each_with_index { |k, i| @keys[i] = true }
+    keys.each_with_index { |k, i| @keys[i] = false }
   end
   
   def key_pressed(e)
