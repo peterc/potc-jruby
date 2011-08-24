@@ -31,3 +31,5 @@ Contributions by:
 ## License
 
 Unsure as yet, not sure of the license for the original game.
+
+Original game and content is Copyright 2011 to Mojang so don't use Notch's graphical assets for your own blockbuster hit until he says it's OK :-)
