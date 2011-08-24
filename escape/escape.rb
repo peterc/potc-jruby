@@ -55,4 +55,5 @@ require 'entities/bullet'
 require 'entities/enemy_entity'
 require 'entities/bat_entity'
 require 'entities/boulder_entity'
+require 'entities/eye_entity'
 

@@ -78,7 +78,7 @@ class Level
 		#add_entity BatBossEntity.new(x, y)   if col == 0xff0001 
 		#add_entity OgreEntity.new(x, y)      if col == 0xff0002 
 		#add_entity BossOgre.new(x, y)        if col == 0xff0003 
-		#add_entity EyeEntity.new(x, y)       if col == 0xff0004 
+		add_entity EyeEntity.new(x, y)       if col == 0xff0004 
 		#add_entity EyeBossEntit.newy(x, y)   if col == 0xff0005 
 		#add_entity GhostEntity.new(x, y)     if col == 0xff0006 
 		#add_entity GhostBossEntity.new(x, y) if col == 0xff0007 
