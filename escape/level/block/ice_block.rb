@@ -21,8 +21,9 @@ class IceBlock < Block
   def blocks(entity)
     return false if entity.is_a?(Player)
     return false if entity.is_a?(Bullet)
-    return false if entity.is_a?(EyeBossEntity)
-    return false if entity.is_a?(EyeEntity)
+    # TODO: Uncomment these when these types of entity exist in the game
+    #return false if entity.is_a?(EyeBossEntity)
+    #return false if entity.is_a?(EyeEntity)
     true
   end  
 end

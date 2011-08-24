@@ -2,6 +2,7 @@ class WaterBlock < Block
   def initialize
     super
     @blocks_motion = true
+    @steps = 0
   end
   
   def tick

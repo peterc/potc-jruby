@@ -22,7 +22,6 @@ class GotLootMenu < Menu
     if @tick_delay > 0
       @tick_delay -= 1 
     elsif use
-      puts "XXX"
       game.set_menu(nil)
     end
   end

@@ -105,11 +105,11 @@ class Level
 	def get_block_by_color(x, y, col)
 	  # This could do with being made more Ruby-like! :-)
 		return SolidBlock.new         if col == 0x93FF9B 
-		#return PitBlock.new           if col == 0x009300
+		return PitBlock.new           if col == 0x009300
 		return SolidBlock.new         if col == 0xFFFFFF 
 		return VanishBlock.new        if col == 0x00FFFF 
 		return ChestBlock.new         if col == 0xFFFF64 
-		#return WaterBlock.new         if col == 0x0000FF 
+		return WaterBlock.new         if col == 0x0000FF 
 		return TorchBlock.new         if col == 0xFF3A02 
 		return BarsBlock.new          if col == 0x4C4C4C 
 		return LadderBlock.new(false) if col == 0xFF66FF 
@@ -118,9 +118,9 @@ class Level
 		return DoorBlock.new          if col == 0xC6C6C6 
 		#return SwitchBlock.new        if col == 0x00FFA7 
 		return PressurePlateBlock.new if col == 0x009380 
-		#return IceBlock.new           if col == 0xff0005 
-		#return IceBlock.new           if col == 0x3F3F60 
-		#return LockedDoorBlock.new    if col == 0xC6C697 
+		return IceBlock.new           if col == 0xff0005 
+		return IceBlock.new           if col == 0x3F3F60 
+		return LockedDoorBlock.new    if col == 0xC6C697 
 		#return AltarBlock.new         if col == 0xFFBA02 
 		#return SpiritWallBlock.new    if col == 0x749327 
 		return Block.new              if col == 0x1A2108 

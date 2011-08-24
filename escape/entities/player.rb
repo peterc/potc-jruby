@@ -192,7 +192,7 @@ class Player < Entity
     @items.each_with_index do |my_item, i|
       if my_item == Item::NONE
         @items[i] = item
-        @selected_slot = 1
+        @selected_slot = i
         @item_use_time = 0
         @level.show_loot_screen(item) if @level
         return
