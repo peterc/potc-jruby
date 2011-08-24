@@ -75,7 +75,7 @@ class Level
 		
 		add_entity BoulderEntity.new(x, y)   if col == 0xAA5500 
 		add_entity BatEntity.new(x, y)       if col == 0xff0000 
-		#add_entity BatBossEntity.new(x, y)   if col == 0xff0001 
+		add_entity BatBossEntity.new(x, y)   if col == 0xff0001 
 		#add_entity OgreEntity.new(x, y)      if col == 0xff0002 
 		#add_entity BossOgre.new(x, y)        if col == 0xff0003 
 		add_entity EyeEntity.new(x, y)       if col == 0xff0004 
