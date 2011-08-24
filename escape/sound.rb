@@ -1,4 +1,6 @@
 java_import javax.sound.sampled.AudioSystem
+java_import javax.sound.sampled.Clip
+java_import javax.sound.sampled.DataLine
 
 class Sound
   attr_accessor :clip
@@ -8,7 +10,8 @@ class Sound
     
     url = java.net.URL.new("file://" + ASSETS_DIR + file_name) # nasty little hack due to borked get_resource (means applet won't be easy..)
     ais = AudioSystem.get_audio_input_stream(url)
-    clip = AudioSystem.clip
+    info = DataLine::Info.new(Clip.java_class, ais.format)
+    clip = AudioSystem.get_line(info)
     clip.open(ais)
     clip.extend JRuby::Synchronized
     sound.clip = clip
