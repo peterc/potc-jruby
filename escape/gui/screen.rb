@@ -49,11 +49,11 @@ class Screen < Bitmap
       
       draw_bitmap(Art::PANEL, 0, @height - PANEL_HEIGHT, 0, 0, @width, PANEL_HEIGHT, Art.get_col(0x707070))
       
-      draw_string("å", 3, @height - 26 + 0, 0x00ffff)
+      draw_string("K", 3, @height - 26 + 0, 0x00ffff)
 			draw_string(game.player.keys.to_s + "/4", 10, @height - 26 + 0, 0xffffff)
-			draw_string("Ä", 3, @height - 26 + 8, 0xffff00)
+			draw_string("T", 3, @height - 26 + 8, 0xffff00)
 			draw_string(game.player.loot.to_s, 10, @height - 26 + 8, 0xffffff)
-			draw_string("Å", 3, @height - 26 + 16, 0xff0000)
+			draw_string("H", 3, @height - 26 + 16, 0xff0000)
 			draw_string(game.player.health.to_s, 10, @height - 26 + 16, 0xffffff)
 
       render_slots(game)
