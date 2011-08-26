@@ -86,7 +86,7 @@ class Screen < Bitmap
   def render_entering(game)
     fill 0, 0, @width, @height, 0
     messages = "Entering " + game.level.name
-    messages.each_with_index do |msg, y|
+    messages.lines.each_with_index do |msg, y|
       draw_string(msg, (@width - msg.length * 6) / 2, (@viewport.height - messages.length * 8) / 2 + y * 8 + 1, 0x111111)
       draw_string(msg, (@width - msg.length * 6) / 2, (@viewport.height - messages.length * 8) / 2 + y * 8, 0x555544)
     end
