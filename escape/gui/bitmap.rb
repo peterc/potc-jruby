@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Bitmap
   attr_accessor :pixels
   attr_reader :height, :width
