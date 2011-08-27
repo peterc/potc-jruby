@@ -32,6 +32,10 @@ Contributions by:
 * Tim Felgentreff (github:timfel)
 * Andrew Chalkley (@chalkers)
 
+## Other links
+
+Romain Lods has been working on a C#-powered .NET port of the game - http://github.com/rlods/PocDotNet
+
 ## License
 
 Unsure as yet, not sure of the license for the original game.
