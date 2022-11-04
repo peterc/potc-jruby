@@ -1,18 +1,18 @@
 # Prelude of the Chambered (JRuby port)
 
-This is an in-progress JRuby port of notch's 48 hour "Ludum Dare" game competition entry, _Prelude of the Chambered_.
+This is a JRuby port of notch's 48 hour "Ludum Dare" game competition entry from 2011: _Prelude of the Chambered_.
 
-![](http://no.gd/m/potc-20110823-230659.jpg)
+![potc](https://user-images.githubusercontent.com/118/200089149-eb291cd7-6c5e-4b18-a03c-f3a67efc7974.jpg)
 
 Notch's Java code is pretty straightforward and I've been looking for an excuse to do a "real" project in JRuby for ages. This seemed an ideal opportunity.
 
-Porting is still in progress but the first few levels of the game are playable (start level, dungeon, overworld, and ice level - no bosses yet).
+The port remains unfinished but the first few levels of the game are playable (start level, dungeon, overworld, and ice level - no bosses).
 
 Controls are W, A, S, D and space. Or arrow keys. To get started, turn around and punch the "broken" wall. Best place to head is along the corridor, to the left, and down into the dungeon. You'll find boulders to punch, magic gloves, and bats to kill down there.
 
 ## Running
 
-To run this code, get JRuby installed (rvm install jruby?) and then just run (from the root folder):
+To run this code, get JRuby installed and then (from the root folder):
 
     ruby escape.rb
     
@@ -24,7 +24,7 @@ To run this code, get JRuby installed (rvm install jruby?) and then just run (fr
 
 _Prelude of the Chambered_ is a game by Markus "Notch" Persson and Mojang
 
-This JRuby port was started by, and is maintained by, Peter Cooper - http://peterc.org/
+This JRuby port was started by, and is maintained by, Peter Cooper.
 
 Contributions by:
 
