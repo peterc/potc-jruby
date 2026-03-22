@@ -38,6 +38,7 @@ class Component < Canvas
     add_mouse_motion_listener @input_handler
     @empty_cursor = Toolkit.default_toolkit.create_custom_cursor(BufferedImage.new(16, 16, BufferedImage::TYPE_INT_ARGB), Point.new(0, 0), "empty")
     @default_cursor = cursor
+    self.focus_traversal_keys_enabled = false
     @running = false
     @had_focus = false
   end

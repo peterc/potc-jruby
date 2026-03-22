@@ -19,10 +19,6 @@ To run this code, get JRuby installed and then (from the root folder):
 
     ruby escape.rb
     
-## Known bugs
-
-* If you take focus away from the game and then come back, the left and right controls stop working
-    
 ## Credits
 
 _Prelude of the Chambered_ is a game by Markus "Notch" Persson and Mojang
