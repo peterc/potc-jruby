@@ -27,9 +27,9 @@ This JRuby port was started by, and is maintained by, Peter Cooper.
 
 Contributions by:
 
-* Charles Nutter (@headius)
-* Tim Felgentreff (github:timfel)
-* Andrew Chalkley (@chalkers)
+* [Charles Nutter](https://github.com/headius)
+* [Tim Felgentreff](https://github.com/timfel)
+* [Andrew Chalkley](https://github.com/chalkers)
 
 ## Other links
 
