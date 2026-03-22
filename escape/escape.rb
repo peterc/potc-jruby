@@ -5,6 +5,11 @@ ASSETS_DIR = File.expand_path(File.dirname(__FILE__) + "/assets")
 require 'java'
 require 'jruby/synchronized'
 
+# Pre-load Java AWT classes to avoid threading issues with JRuby proxy class creation
+java_import java.awt.Graphics
+java_import java.awt.Graphics2D
+java_import java.awt.image.BufferStrategy
+
 require 'input_handler'
 require 'component'
 require 'game'

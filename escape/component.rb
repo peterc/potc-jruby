@@ -169,6 +169,13 @@ class Component < Canvas
     frame.location_relative_to = nil
     frame.default_close_operation = JFrame::EXIT_ON_CLOSE
     frame.visible = true
+    # Pre-create buffer strategy and touch draw_graphics on the main thread
+    # to force JRuby proxy class creation (avoids threading bug)
+    game.create_buffer_strategy 2
+    bs = game.get_buffer_strategy
+    g = bs.draw_graphics
+    g.dispose
+
     game.start
   end
 end
