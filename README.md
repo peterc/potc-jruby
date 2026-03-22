@@ -12,6 +12,9 @@ Controls are W, A, S, D and space. Or arrow keys. To get started, turn around an
 
 ## Running
 
+> [!NOTE]
+> As of 2026, this runs on JRuby 9.4.14.0 and is finally actually fast!
+
 To run this code, get JRuby installed and then (from the root folder):
 
     ruby escape.rb
